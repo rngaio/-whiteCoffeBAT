@@ -9,7 +9,7 @@
     width: 400px;
     height: 300px;
     background: #FFD0BD;
-    position: relative; /* Change from absolute to relative */
+    position: relative; 
     overflow: hidden;
   }
 
