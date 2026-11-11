@@ -3,29 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmation's Burger OBS Overlay</title>
+  
+  <!-- Tailwind CSS CDN for smooth layout styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Modern rounded sans-serif font for stream readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="coffre.css">
-  <title>CSSBattle Starter</title>
-<style>
- 
-</style>
+  
+  
 </head>
-<body>
-<div id="drink"  class="couleur"><div id="fall" class="color"></div></div>
+<body class="flex items-center justify-start p-16">
+ 
 
+  <!-- ========================================== -->
+  <!-- MAIN BURGER OVERLAY WRAPPER               -->
+  <!-- ========================================== -->
+  <div class="burger-container w-[720px] flex flex-col gap-2 relative select-none">
+    
+    <!-- ---------------------------------------- -->
+    <!-- 1. TOP BUN LAYER (Header Title)           -->
+    <!-- ---------------------------------------- -->
+    <div class="top-bun h-24 w-full flex items-center justify-center relative">
+      <!-- Decorative Sesame Seeds -->
+      <div class="sesame top-4 left-16"></div>
+      <div class="sesame top-8 left-36 transform rotate-12"></div>
+      <div class="sesame top-5 left-72 transform -rotate-45"></div>
+      <div class="sesame top-9 right-40 transform rotate-45"></div>
+      <div class="sesame top-4 right-16"></div>
+ 
+      <!-- Main Overlay Title -->
+      <h3 class="text-3xl font-bold text-white text-glow tracking-wider uppercase flex items-center gap-2">
+        Burger
+      </h3>
+    </div>
 
-<div id="run"  class="couleur"><div id="walk" class="couleur"></div></div>
+    <!-- ---------------------------------------- -->
+    <!-- 2. LETTUCE LAYER (Socials / Handles)     -->
+    <!-- ---------------------------------------- -->
+    <div class="lettuce-layer p-3 w-full flex items-center justify-between shadow-md">
+      <div class="flex items-center gap-2 text-white font-bold text-xl px-3 min-w-[150px] text-glow">
+        <svg class="w-6 h-6 fill-current text-green-200" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+        </svg>
+        <span>Socials :</span>
+      </div>
 
+      <!-- Blank Stream Info Space (Edit text here or display via OBS text source) -->
+      <div id="Socials-info" class="info-card flex-1 h-12 flex items-center px-4 font-semibold text-lg text-green-100">
+        <!-- Customize your social handles below -->
+        <span class="truncate"> Twitch: Boulcair &bull; Instagram: @ngaioboulcair &bull; Tiktok: watchrv</span>
+      </div>
 
-<div id="eyes"  class="couleur"><div id="hear" class="color"></div></div>
+      <!-- Decorative Lettuce Bottom Edge -->
+      <div class="lettuce-wavy"></div>
+    </div>
 
+    <!-- ---------------------------------------- -->
+    <!-- 3. CHEESE LAYER (Flash Info / Announcement) -->
+    <!-- ---------------------------------------- -->
+    <div class="cheese-layer p-3 w-full flex items-center justify-between shadow-md">
+      <!-- Decorative Cheese Drip -->
+      <div class="cheese-drip"></div>
 
-<div id="see"  class="couleur"></div>
-<div id="sight" class="color"></div>
+      <div class="flex items-center gap-2 text-amber-950 font-bold text-xl px-3 min-w-[150px] text-glow">
+        <span>⚡ Cheesy Info :</span>
+      </div>
 
-<div id="eat"  class="couleur"></div>
-<div id="laugh" class="color"></div>
+      <!-- Blank Stream Info Space for Announcements/Goals -->
+      <div id="Flash-News" class="info-card flex-1 h-12 flex items-center px-4 font-semibold text-lg text-amber-200">
+        <!-- Customize stream goal/news text here -->
+        <span class="truncate"> New Follower Goal: 4 / 10 | Today News: Meet & Greet !</span>
+      </div>
+    </div>
 
-<div id="box"  class="couleur"></div>
-<div id="love"  class="color"></div>
+    <!-- ---------------------------------------- -->
+    <!-- 4. MEAT PATTY LAYER (Date & Live Clock)   -->
+    <!-- ---------------------------------------- -->
+    <div class="patty-layer p-3 w-full flex items-center justify-between shadow-md">
+      <div class="flex items-center gap-2 text-amber-100 font-bold text-xl px-3 min-w-[150px] text-glow">
+        <svg class="w-6 h-6 fill-current text-amber-400" viewBox="0 0 24 24">
+          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+        </svg>
+        <span>Date & Time :</span>
+      </div>
+
+      <!-- Dynamic JS Live Clock Container -->
+      <div id="Meat-Date" class="info-card flex-1 h-12 flex items-center justify-between px-4 font-semibold text-lg text-amber-100">
+        <span id="current-date">Loading date...</span>
+        <span id="current-time" class="font-mono bg-black/40 px-3 py-1 rounded text-amber-300">00:00:00</span>
+      </div>
+    </div>
+
+    <!-- ---------------------------------------- -->
+    <!-- 5. KETCHUP / SAUCE SLICE                  -->
+    <!-- ---------------------------------------- -->
+    <div class="ketchup-drip-line h-3 w-[94%] mx-auto -my-1 z-10"></div>
+
+    <!-- ---------------------------------------- -->
+    <!-- 6. BOTTOM BUN LAYER                      -->
+    <!-- ---------------------------------------- -->
+    <div class="bottom-bun h-10 w-full flex items-center justify-center">
+      <div class="w-24 h-1.5 bg-amber-200/30 rounded-full"></div>
+    </div>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: LIVE TIME & DATE AUTOMATION    -->
+  <!-- ========================================== -->
+   <script src="regular.js"></script>
+
 </body>
 </html>
